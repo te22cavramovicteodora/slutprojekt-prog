@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\teodora.avramovic\\Documents\\slutprojekt prog\\slutprojekt prr01\\slutprojekt prr01.csproj": {}
+    "c:\\Users\\teodora.avramovic\\Documents\\slutprojekt prog\\slutprojekt prr01\\slutprojekt prr01.csproj": {}
   },
   "projects": {
-    "C:\\Users\\teodora.avramovic\\Documents\\slutprojekt prog\\slutprojekt prr01\\slutprojekt prr01.csproj": {
+    "c:\\Users\\teodora.avramovic\\Documents\\slutprojekt prog\\slutprojekt prr01\\slutprojekt prr01.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\teodora.avramovic\\Documents\\slutprojekt prog\\slutprojekt prr01\\slutprojekt prr01.csproj",
+        "projectUniqueName": "c:\\Users\\teodora.avramovic\\Documents\\slutprojekt prog\\slutprojekt prr01\\slutprojekt prr01.csproj",
         "projectName": "slutprojekt prr01",
-        "projectPath": "C:\\Users\\teodora.avramovic\\Documents\\slutprojekt prog\\slutprojekt prr01\\slutprojekt prr01.csproj",
+        "projectPath": "c:\\Users\\teodora.avramovic\\Documents\\slutprojekt prog\\slutprojekt prr01\\slutprojekt prr01.csproj",
         "packagesPath": "C:\\Users\\teodora.avramovic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\teodora.avramovic\\Documents\\slutprojekt prog\\slutprojekt prr01\\obj\\",
+        "outputPath": "c:\\Users\\teodora.avramovic\\Documents\\slutprojekt prog\\slutprojekt prr01\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +43,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Raylib-cs": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

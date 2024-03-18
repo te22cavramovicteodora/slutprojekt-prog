@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "uDwiIkKWAJZLBJMHa7sKgG8w56mClEhwauWep6EMdzWf8+dcoCTug1kZA3vW6cZkbZNPpRqbRPdnWk9/1KouAw==",
+  "dgSpecHash": "Qd9D1LR6McFr2uUgEygVUA4sMqeJATHC4BZtdiddvu5UkMr/djJhxCqDKVRETpR17Vp0W9AMRE98j2zWtfJDkg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\teodora.avramovic\\Documents\\slutprojekt prog\\slutprojekt prr01\\slutprojekt prr01.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "c:\\Users\\teodora.avramovic\\Documents\\slutprojekt prog\\slutprojekt prr01\\slutprojekt prr01.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\teodora.avramovic\\.nuget\\packages\\raylib-cs\\6.0.0\\raylib-cs.6.0.0.nupkg.sha512",
+    "C:\\Users\\teodora.avramovic\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }
