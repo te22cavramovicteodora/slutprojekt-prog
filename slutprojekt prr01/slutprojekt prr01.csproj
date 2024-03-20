@@ -12,4 +12,9 @@
     <PackageReference Include="Raylib-cs" Version="6.0.0" />
   </ItemGroup>
 
+    <ItemGroup>
+    <Content Include="*.png" CopyToOutputDirectory="Always"/>
+    <Content Include="*.mp3" CopyToOutputDirectory="Always"/>
+  </ItemGroup>
+
 </Project>
