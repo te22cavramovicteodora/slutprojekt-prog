@@ -15,6 +15,7 @@
     <ItemGroup>
     <Content Include="*.png" CopyToOutputDirectory="Always"/>
     <Content Include="*.mp3" CopyToOutputDirectory="Always"/>
+    <Content Include="*.gif" CopyToOutputDirectory="Always"/>
   </ItemGroup>
 
 </Project>

@@ -23,3 +23,4 @@ c:\Users\teodora.avramovic\Documents\slutprojekt prog\slutprojekt prr01\obj\Debu
 c:\Users\teodora.avramovic\Documents\slutprojekt prog\slutprojekt prr01\obj\Debug\net8.0\slutprojekt prr01.csproj.CopyComplete
 c:\Users\teodora.avramovic\Documents\slutprojekt prog\slutprojekt prr01\bin\Debug\net8.0\raylibcoolt.png
 c:\Users\teodora.avramovic\Documents\slutprojekt prog\slutprojekt prr01\bin\Debug\net8.0\grannybattre.mp3
+c:\Users\teodora.avramovic\Documents\slutprojekt prog\slutprojekt prr01\bin\Debug\net8.0\egnaska.gif

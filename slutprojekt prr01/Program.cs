@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Numerics;
 using Raylib_cs;
+using System.Security;
 
 Raylib.InitWindow(800, 600, "VERAS HOUSE OF HORRORS");
 
@@ -30,6 +31,9 @@ Texture2D image = Raylib.LoadTexture("raylibcoolt.png");
 Raylib.InitAudioDevice();
 Music granny = Raylib.LoadMusicStream("grannybattre.mp3");
 Raylib.PlayMusicStream(granny);
+
+Vector2 flytta;
+Rectangle litengrej = new(25, 25, 25, 25);
 
 while (!Raylib.WindowShouldClose())
 {
@@ -111,7 +115,7 @@ while (!Raylib.WindowShouldClose())
         }
         Raylib.EndDrawing();
 
-         if (Raylib.CheckCollisionPointRec(mousePos, amira))
+        if (Raylib.CheckCollisionPointRec(mousePos, amira))
         {
             if (Raylib.IsMouseButtonPressed(MouseButton.Left))
             {
@@ -120,44 +124,62 @@ while (!Raylib.WindowShouldClose())
         }
     }
 
-
-
     else if (currentRoom == "labyrint")
     {
-
         Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.Black);
-        Raylib.DrawRectangle(10, 10, 10, 10, Color.Blue);
-        Raylib.EndDrawing();
+
+
+        Vector2 Zero = new Vector2(0, 0);
+
+        flytta = Vector2.Zero;
+
+        float speed = 2;
+        if (currentRoom == "labyrint")
+        {
+            Raylib.BeginDrawing();
+            Raylib.ClearBackground(Color.Black);
+            Raylib.DrawRectangleRec(litengrej, Color.Blue);
+
+            if (Raylib.IsKeyDown(KeyboardKey.Up))
+            {
+                flytta.Y = -5;
+            }
+            else if (Raylib.IsKeyDown(KeyboardKey.Down))
+            {
+                flytta.Y = 5;
+            }
+            if (Raylib.IsKeyDown(KeyboardKey.Right))
+            {
+                flytta.X = 5;
+            }
+            else if (Raylib.IsKeyDown(KeyboardKey.Left))
+            {
+                flytta.X = -5;
+            }
+
+            if (flytta.Length() > 0)
+            {
+                flytta = Vector2.Normalize(flytta) * speed;
+            }
+            litengrej.X += flytta.X;
+            litengrej.Y += flytta.Y;
+            bool undoX = false;
+            bool undoY = false;
+
+            if (undoX == true)
+            {
+                litengrej.X -= flytta.X;
+            }
+            if (undoY == true)
+            {
+                litengrej.Y -= flytta.Y;
+            }
+
+
+
+            Raylib.EndDrawing();
+        }
     }
 }
 // shift alt f
-
-// choice = Console.ReadLine();
-//choice = choice.ToLower();
-
-// if (choice == "1")
-// {
-//     Console.WriteLine("hehe");
-// }
-
-// if (choice == "info-1")
-// {
-//     Console.WriteLine("Veras spegellabyrint är ett labyrintspel helt utan jumpscares och eastereggs jag lovar. Målet med banan är att klara labyrinten.");
-// }
-
-//if (choice == "info-2")
-// {
-//     Console.WriteLine("Veras tetris extravaganza talar för sig själv. Vera älskar tetris och det gör alla andra på gjorden också.");
-// }
-// if (choice == "info-3")
-// {
-//     Console.WriteLine("Det svåraste, sorgligaste, mest utmärkta, ryggradskittlande, tår tårkande, mest faantastiska, uttänkta, A-i-slutbetyg-förtjänande, underbara, smarta, gjort av ett geni- spelet du någonsin kommer köra, synd bara att det inte finns än.");
-// }
-
-//Console.ReadLine();
-
-
-
-
-
