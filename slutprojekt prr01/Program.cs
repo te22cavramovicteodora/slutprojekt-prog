@@ -26,8 +26,9 @@ Rectangle amira = new Rectangle(320, 140, 140, 30);
 //      SetTargetFPS(30);  
 //       //till hit
 //  }
-Texture2D image = Raylib.LoadTexture("raylibcoolt.png");
-
+Texture2D image = Raylib.LoadTexture("grannyny.png");
+Texture2D labyrintA = Raylib.LoadTexture("labyrintett.png");
+Texture2D labyrintB = Raylib.LoadTexture("labyrinttva.png");
 Raylib.InitAudioDevice();
 Music granny = Raylib.LoadMusicStream("grannybattre.mp3");
 Raylib.PlayMusicStream(granny);
@@ -124,62 +125,61 @@ while (!Raylib.WindowShouldClose())
         }
     }
 
-    else if (currentRoom == "labyrint")
+    else if (currentRoom == "labyrint ett")
     {
         Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.Black);
-
-
         Vector2 Zero = new Vector2(0, 0);
-
+        Raylib.DrawTexture(labyrintA, 0, 0, Color.White);
+    }
+    if (currentRoom == "labyrint")
+    {
         flytta = Vector2.Zero;
-
         float speed = 2;
-        if (currentRoom == "labyrint")
+        Raylib.BeginDrawing();
+        Raylib.ClearBackground(Color.Black);
+        Raylib.DrawTexture(labyrintA, 0, 0, Color.White);
+        Raylib.DrawRectangleRec(litengrej, Color.Blue);
+
+        if (Raylib.IsKeyDown(KeyboardKey.Up))
         {
-            Raylib.BeginDrawing();
-            Raylib.ClearBackground(Color.Black);
-            Raylib.DrawRectangleRec(litengrej, Color.Blue);
-
-            if (Raylib.IsKeyDown(KeyboardKey.Up))
-            {
-                flytta.Y = -5;
-            }
-            else if (Raylib.IsKeyDown(KeyboardKey.Down))
-            {
-                flytta.Y = 5;
-            }
-            if (Raylib.IsKeyDown(KeyboardKey.Right))
-            {
-                flytta.X = 5;
-            }
-            else if (Raylib.IsKeyDown(KeyboardKey.Left))
-            {
-                flytta.X = -5;
-            }
-
-            if (flytta.Length() > 0)
-            {
-                flytta = Vector2.Normalize(flytta) * speed;
-            }
-            litengrej.X += flytta.X;
-            litengrej.Y += flytta.Y;
-            bool undoX = false;
-            bool undoY = false;
-
-            if (undoX == true)
-            {
-                litengrej.X -= flytta.X;
-            }
-            if (undoY == true)
-            {
-                litengrej.Y -= flytta.Y;
-            }
-
-
-
-            Raylib.EndDrawing();
+            flytta.Y = -5;
         }
+        else if (Raylib.IsKeyDown(KeyboardKey.Down))
+        {
+            flytta.Y = 5;
+        }
+        if (Raylib.IsKeyDown(KeyboardKey.Right))
+        {
+            flytta.X = 5;
+        }
+        else if (Raylib.IsKeyDown(KeyboardKey.Left))
+        {
+            flytta.X = -5;
+        }
+
+        if (flytta.Length() > 0)
+        {
+            flytta = Vector2.Normalize(flytta) * speed;
+        }
+        litengrej.X += flytta.X;
+        litengrej.Y += flytta.Y;
+        bool undoX = false;
+        bool undoY = false;
+
+        if (undoX == true)
+        {
+            litengrej.X -= flytta.X;
+        }
+        if (undoY == true)
+        {
+            litengrej.Y -= flytta.Y;
+        }
+
+
+
+        Raylib.EndDrawing();
     }
 }
+
 // shift alt f
