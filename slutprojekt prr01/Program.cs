@@ -53,27 +53,16 @@ walls.Add(new(475, 530, 10, 80));
 
 
 string currentRoom = "start";
+Raylib.BeginDrawing();
 Rectangle startknapp = new Rectangle(320, 140, 140, 30);
 Rectangle bytalevel = new Rectangle(413, 545, 50, 50);
-//  int main(void)
-//  {
-//     //inte min egenskrivna kod!
-//     const int screenWidth = 800;
-//     const int screenHeight = 450;
 
-//    InitWindow(screenWidth, screenHeight, "raylib [audio] example - music playing (streaming)");
-//        InitAudioDevice(); 
-//         Music music = LoadMusicStream("resources/country.mp3");
-//         PlayMusicStream(music);
-
-//     float timePlayed = 0.0f;  
-//      bool pause = false;
-//      SetTargetFPS(30);  
-//       //till hit
-//  }
-Texture2D image = Raylib.LoadTexture("grannyny.png");
+Texture2D farmor = Raylib.LoadTexture("grannyny.png");
 Texture2D labyrintA = Raylib.LoadTexture("labyrintett.png");
 Texture2D labyrintB = Raylib.LoadTexture("labyrinttva.png");
+Texture2D eyes = Raylib.LoadTexture("eyee.png");
+Texture2D stonedoor = Raylib.LoadTexture("stonedoor.png");
+
 Raylib.InitAudioDevice();
 Music granny = Raylib.LoadMusicStream("grannybattre.mp3");
 Raylib.PlayMusicStream(granny);
@@ -83,11 +72,12 @@ Rectangle karaktar = new(345, 10, 25, 25);
 
 while (!Raylib.WindowShouldClose())
 {
+    Raylib.BeginDrawing();
     Raylib.UpdateMusicStream(granny);
 
     if (currentRoom == "start")
     {
-        // Vector2 amira = new Vector2(320, 140);
+
         Vector2 mousePos = Raylib.GetMousePosition();
 
         Raylib.BeginDrawing();
@@ -97,15 +87,14 @@ while (!Raylib.WindowShouldClose())
         Raylib.DrawText("VERAS HOUSE OF HORRORS", 180, 70, 30, Color.Red);
         Raylib.DrawRectangleRec(startknapp, Color.Red);
         Raylib.DrawText("TRYCK HÄR", 322, 144, 23, Color.Black);
-        // Image image = Raylib.LoadImage("raylincoolt.png");
-        // Raylib.LoadTextureFromImage();
-        Raylib.DrawTexture(image, 200, 200, Color.White);
+
+        Raylib.DrawTexture(farmor, 200, 200, Color.White);
 
 
 
         Raylib.EndDrawing();
 
-        // Console.WriteLine(Raylib.IsMouseButtonPressed(MouseButton.Left) == true);
+
 
         if (Raylib.CheckCollisionPointRec(mousePos, startknapp))
         {
@@ -142,7 +131,7 @@ while (!Raylib.WindowShouldClose())
         Raylib.DrawText("1.Veras spegel labyrint", 245, 149, 20, Color.Black);
         Raylib.DrawText("2.Veras tetris extravaganza", 245, 259, 18, Color.Black);
         Raylib.DrawText("3.Veras easteregg hunt", 245, 369, 20, Color.Black);
-        // Raylib.DrawText("Skriv numret av det minispelet du vill välja", 5, 580, 20, Color.Red);
+    
 
         if (Raylib.CheckCollisionPointCircle(mousePos, firstButtonPosition, 30))
         {
@@ -183,7 +172,8 @@ while (!Raylib.WindowShouldClose())
         Raylib.DrawTexture(labyrintA, 0, 0, Color.White);
         Raylib.DrawRectangleRec(karaktar, Color.Red);
         Raylib.DrawRectangleRec(bytalevel, Color.Black);
-    
+        Raylib.DrawTexture(stonedoor, 413, 545, Color.White);
+
 
         if (Raylib.IsKeyDown(KeyboardKey.Up))
         {
@@ -211,14 +201,30 @@ while (!Raylib.WindowShouldClose())
         bool undoX = false;
         bool undoY = false;
 
-        foreach(Rectangle wall in walls)
+        if (karaktar.X > 800 - karaktar.Width || karaktar.X < 0)
         {
-             Raylib.DrawRectangleRec(wall, Color.DarkGray);  
 
-             if (Raylib.CheckCollisionRecs(karaktar, wall))
-             {
-                
-             }
+            undoX = true;
+        }
+        if (karaktar.Y > 600 - karaktar.Height || karaktar.Y < 0)
+        {
+
+            undoY = true;
+        }
+
+        foreach (Rectangle wall in walls)
+        {
+            Raylib.DrawRectangleRec(wall, Color.DarkGray);
+
+            if (Raylib.CheckCollisionRecs(karaktar, wall))
+            {
+
+Raylib.DrawTexture(eyes, 200, 200, Color.White);
+                undoX = true;
+                undoY = true;
+
+
+            }
         }
 
 
@@ -231,37 +237,24 @@ while (!Raylib.WindowShouldClose())
             karaktar.Y -= flytta.Y;
         }
 
-Raylib.EndDrawing();
-if (Raylib.CheckCollisionRecs(karaktar, bytalevel))
-{
-currentRoom = "endscreen";
-}     
+        Raylib.EndDrawing();
+        if (Raylib.CheckCollisionRecs(karaktar, bytalevel))
+        {
+            currentRoom = "endscreen";
+        }
     }
 
     else if (currentRoom == "endscreen")
     {
         Raylib.BeginDrawing();
-        { 
-        Raylib.ClearBackground(Color.Black);
-        Raylib.DrawText("DU NÅDDE SLUTET AV LABYRINTEN", 120, 200, 30, Color.Red);
-        Raylib.DrawText("DU VANN OCH ÄR NU FRI!", 200, 300, 30, Color.Red);
-        Raylib.EndDrawing();
+        {
+            Raylib.ClearBackground(Color.Black);
+            Raylib.DrawText("DU NÅDDE SLUTET AV LABYRINTEN", 120, 200, 30, Color.Red);
+            Raylib.DrawText("DU VANN OCH ÄR NU FRI!", 200, 300, 30, Color.Red);
+            Raylib.DrawText("...eller?", 500, 370, 10, Color.Red);
+            Raylib.EndDrawing();
+        }
     }
-}
-
-if (Raylib.IsMouseButtonDown(MouseButton.Left))
-{
- currentRoom = "dundundun";
-}
-else if (currentRoom == "endscreen")
-{
-Raylib.BeginDrawing();
-        
-        Raylib.ClearBackground(Color.Black);
-        Raylib.DrawText("...", 120, 200, 30, Color.Red);
-        Raylib.EndDrawing();
-}
-
 
 }
 

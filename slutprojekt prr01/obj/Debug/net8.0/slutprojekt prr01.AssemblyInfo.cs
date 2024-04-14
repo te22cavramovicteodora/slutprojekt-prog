@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("slutprojekt prr01")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff6a815db819a5f4d80be37ff910d49537f80b28")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2c952fe10528e430ec7186d502b09426286661a7")]
 [assembly: System.Reflection.AssemblyProductAttribute("slutprojekt prr01")]
 [assembly: System.Reflection.AssemblyTitleAttribute("slutprojekt prr01")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

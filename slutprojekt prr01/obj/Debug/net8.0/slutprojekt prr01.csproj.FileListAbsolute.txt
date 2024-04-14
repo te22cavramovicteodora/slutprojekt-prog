@@ -27,3 +27,5 @@ c:\Users\teodora.avramovic\Documents\slutprojekt prog\slutprojekt prr01\bin\Debu
 c:\Users\teodora.avramovic\Documents\slutprojekt prog\slutprojekt prr01\bin\Debug\net8.0\grannyny.png
 c:\Users\teodora.avramovic\Documents\slutprojekt prog\slutprojekt prr01\bin\Debug\net8.0\labyrintett.png
 c:\Users\teodora.avramovic\Documents\slutprojekt prog\slutprojekt prr01\bin\Debug\net8.0\labyrinttva.png
+c:\Users\teodora.avramovic\Documents\slutprojekt prog\slutprojekt prr01\bin\Debug\net8.0\eyee.png
+c:\Users\teodora.avramovic\Documents\slutprojekt prog\slutprojekt prr01\bin\Debug\net8.0\stonedoor.png
