@@ -55,14 +55,14 @@ walls.Add(new(475, 530, 10, 80));
 string currentRoom = "start";
 Raylib.BeginDrawing();
 Rectangle startknapp = new Rectangle(320, 140, 140, 30);
-Rectangle bytalevel = new Rectangle(413, 545, 50, 50);
+Rectangle bytalevel = new Rectangle(423, 550, 30, 30);
 
 Texture2D farmor = Raylib.LoadTexture("grannyny.png");
 Texture2D labyrintA = Raylib.LoadTexture("labyrintett.png");
 Texture2D labyrintB = Raylib.LoadTexture("labyrinttva.png");
 Texture2D eyes = Raylib.LoadTexture("eyee.png");
 Texture2D stonedoor = Raylib.LoadTexture("stonedoor.png");
-
+Texture2D glitch = Raylib.LoadTexture("glitchyoverlay.png");
 Raylib.InitAudioDevice();
 Music granny = Raylib.LoadMusicStream("grannybattre.mp3");
 Raylib.PlayMusicStream(granny);
@@ -131,7 +131,7 @@ while (!Raylib.WindowShouldClose())
         Raylib.DrawText("1.Veras spegel labyrint", 245, 149, 20, Color.Black);
         Raylib.DrawText("2.Veras tetris extravaganza", 245, 259, 18, Color.Black);
         Raylib.DrawText("3.Veras easteregg hunt", 245, 369, 20, Color.Black);
-    
+
 
         if (Raylib.CheckCollisionPointCircle(mousePos, firstButtonPosition, 30))
         {
@@ -219,7 +219,27 @@ while (!Raylib.WindowShouldClose())
             if (Raylib.CheckCollisionRecs(karaktar, wall))
             {
 
-Raylib.DrawTexture(eyes, 200, 200, Color.White);
+                Raylib.DrawTexture(eyes, 200, 180, Color.White);
+                Raylib.DrawTexture(eyes, 230, 100, Color.White);
+                Raylib.DrawTexture(eyes, 130, 300, Color.White);
+                Raylib.DrawTexture(eyes, 430, 500, Color.White);
+                Raylib.DrawTexture(eyes, 400, 310, Color.White);
+                Raylib.DrawTexture(eyes, 120, 410, Color.White);
+                Raylib.DrawTexture(eyes, 530, 320, Color.White);
+                Raylib.DrawTexture(eyes, 120, 500, Color.White);
+                Raylib.DrawTexture(eyes, 320, 500, Color.White);
+                Raylib.DrawTexture(eyes, 420, 500, Color.White);
+                Raylib.DrawTexture(eyes, 140, 680, Color.White);
+                Raylib.DrawTexture(eyes, 330, 700, Color.White);
+                Raylib.DrawTexture(eyes, 600, 100, Color.White);
+                Raylib.DrawTexture(eyes, 760, 80, Color.White);
+                Raylib.DrawTexture(eyes, 20, 20, Color.White);
+                Raylib.DrawTexture(eyes, 60, 100, Color.White);
+                Raylib.DrawText("VAKNA", 30, 30, 30, Color.Blue);
+                Raylib.DrawText("HON SER DIG", 300, 250, 30, Color.Blue);
+                Raylib.DrawText("VERA COHEN", 570, 400, 30, Color.Blue);
+                Raylib.DrawTexture(farmor, 0, 10, Color.White);
+                Raylib.DrawTexture(glitch, 0, 0, Color.White);
                 undoX = true;
                 undoY = true;
 
