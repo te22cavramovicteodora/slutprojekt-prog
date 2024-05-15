@@ -54,10 +54,10 @@ walls.Add(new(475, 530, 10, 80));
 
 string currentRoom = "start";
 Raylib.BeginDrawing();
-Rectangle startknapp = new Rectangle(320, 140, 140, 30);
-Rectangle bytalevel = new Rectangle(423, 550, 30, 30);
+Rectangle startbutton = new Rectangle(320, 140, 140, 30);
+Rectangle switchlevel = new Rectangle(423, 550, 30, 30);
 
-Texture2D farmor = Raylib.LoadTexture("grannyny.png");
+Texture2D grannyny = Raylib.LoadTexture("grannyny.png");
 Texture2D labyrintA = Raylib.LoadTexture("labyrintett.png");
 Texture2D labyrintB = Raylib.LoadTexture("labyrinttva.png");
 Texture2D eyes = Raylib.LoadTexture("eyee.png");
@@ -67,8 +67,8 @@ Raylib.InitAudioDevice();
 Music granny = Raylib.LoadMusicStream("grannybattre.mp3");
 Raylib.PlayMusicStream(granny);
 
-Vector2 flytta;
-Rectangle karaktar = new(345, 10, 25, 25);
+Vector2 move;
+Rectangle character = new(345, 10, 25, 25);
 
 while (!Raylib.WindowShouldClose())
 {
@@ -85,10 +85,10 @@ while (!Raylib.WindowShouldClose())
 
         Raylib.DrawText("VÄLKOMMEN TILL", 245, 40, 30, Color.Red);
         Raylib.DrawText("VERAS HOUSE OF HORRORS", 180, 70, 30, Color.Red);
-        Raylib.DrawRectangleRec(startknapp, Color.Red);
+        Raylib.DrawRectangleRec(startbutton, Color.Red);
         Raylib.DrawText("TRYCK HÄR", 322, 144, 23, Color.Black);
 
-        Raylib.DrawTexture(farmor, 200, 200, Color.White);
+        Raylib.DrawTexture(grannyny, 200, 200, Color.White);
 
 
 
@@ -96,7 +96,7 @@ while (!Raylib.WindowShouldClose())
 
 
 
-        if (Raylib.CheckCollisionPointRec(mousePos, startknapp))
+        if (Raylib.CheckCollisionPointRec(mousePos, startbutton))
         {
             if (Raylib.IsMouseButtonPressed(MouseButton.Left))
             {
@@ -150,7 +150,7 @@ while (!Raylib.WindowShouldClose())
         }
         Raylib.EndDrawing();
 
-        if (Raylib.CheckCollisionPointRec(mousePos, startknapp))
+        if (Raylib.CheckCollisionPointRec(mousePos, startbutton))
         {
             if (Raylib.IsMouseButtonPressed(MouseButton.Left))
             {
@@ -159,54 +159,54 @@ while (!Raylib.WindowShouldClose())
         }
     }
 
-    else if (currentRoom == "labyrint ett")
+    else if (currentRoom == "labyrint one")
     {
         Raylib.BeginDrawing();
     }
     if (currentRoom == "labyrint")
     {
-        flytta = Vector2.Zero;
+        move = Vector2.Zero;
         float speed = 2;
         Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.Black);
         Raylib.DrawTexture(labyrintA, 0, 0, Color.White);
-        Raylib.DrawRectangleRec(karaktar, Color.Red);
-        Raylib.DrawRectangleRec(bytalevel, Color.Black);
+        Raylib.DrawRectangleRec(character, Color.Red);
+        Raylib.DrawRectangleRec(switchlevel, Color.Black);
         Raylib.DrawTexture(stonedoor, 413, 545, Color.White);
 
 
         if (Raylib.IsKeyDown(KeyboardKey.Up))
         {
-            flytta.Y = -5;
+            move.Y = -5;
         }
         else if (Raylib.IsKeyDown(KeyboardKey.Down))
         {
-            flytta.Y = 5;
+            move.Y = 5;
         }
         if (Raylib.IsKeyDown(KeyboardKey.Right))
         {
-            flytta.X = 5;
+            move.X = 5;
         }
         else if (Raylib.IsKeyDown(KeyboardKey.Left))
         {
-            flytta.X = -5;
+            move.X = -5;
         }
 
-        if (flytta.Length() > 0)
+        if (move.Length() > 0)
         {
-            flytta = Vector2.Normalize(flytta) * speed;
+            move = Vector2.Normalize(move) * speed;
         }
-        karaktar.X += flytta.X;
-        karaktar.Y += flytta.Y;
+        character.X += move.X;
+        character.Y += move.Y;
         bool undoX = false;
         bool undoY = false;
 
-        if (karaktar.X > 800 - karaktar.Width || karaktar.X < 0)
+        if (character.X > 800 - character.Width || character.X < 0)
         {
 
             undoX = true;
         }
-        if (karaktar.Y > 600 - karaktar.Height || karaktar.Y < 0)
+        if (character.Y > 600 - character.Height || character.Y < 0)
         {
 
             undoY = true;
@@ -216,7 +216,7 @@ while (!Raylib.WindowShouldClose())
         {
             Raylib.DrawRectangleRec(wall, Color.DarkGray);
 
-            if (Raylib.CheckCollisionRecs(karaktar, wall))
+            if (Raylib.CheckCollisionRecs(character, wall))
             {
 
                 Raylib.DrawTexture(eyes, 200, 180, Color.White);
@@ -238,7 +238,7 @@ while (!Raylib.WindowShouldClose())
                 Raylib.DrawText("VAKNA", 30, 30, 30, Color.Blue);
                 Raylib.DrawText("HON SER DIG", 300, 250, 30, Color.Blue);
                 Raylib.DrawText("VERA COHEN", 570, 400, 30, Color.Blue);
-                Raylib.DrawTexture(farmor, 0, 10, Color.White);
+                Raylib.DrawTexture(grannyny, 0, 10, Color.White);
                 Raylib.DrawTexture(glitch, 0, 0, Color.White);
                 undoX = true;
                 undoY = true;
@@ -250,15 +250,15 @@ while (!Raylib.WindowShouldClose())
 
         if (undoX == true)
         {
-            karaktar.X -= flytta.X;
+            character.X -= move.X;
         }
         if (undoY == true)
         {
-            karaktar.Y -= flytta.Y;
+            character.Y -= move.Y;
         }
 
         Raylib.EndDrawing();
-        if (Raylib.CheckCollisionRecs(karaktar, bytalevel))
+        if (Raylib.CheckCollisionRecs(character, switchlevel))
         {
             currentRoom = "endscreen";
         }
@@ -268,14 +268,19 @@ while (!Raylib.WindowShouldClose())
     {
         Raylib.BeginDrawing();
         {
-            Raylib.ClearBackground(Color.Black);
-            Raylib.DrawText("DU NÅDDE SLUTET AV LABYRINTEN", 120, 200, 30, Color.Red);
-            Raylib.DrawText("DU VANN OCH ÄR NU FRI!", 200, 300, 30, Color.Red);
-            Raylib.DrawText("...eller?", 500, 370, 10, Color.Red);
-            Raylib.EndDrawing();
+            Duvann();
         }
     }
 
 }
 
+
+void Duvann()
+{
+            Raylib.ClearBackground(Color.Black);
+            Raylib.DrawText("DU NÅDDE SLUTET AV LABYRINTEN", 120, 200, 30, Color.Red);
+            Raylib.DrawText("DU VANN OCH ÄR NU FRI!", 200, 300, 30, Color.Red);
+            Raylib.DrawText("...eller?", 500, 370, 10, Color.Red);
+            Raylib.EndDrawing();
+}
 // shift alt f

@@ -1,0 +1,13 @@
+ if (Raylib.CheckCollisionPointRec(mousePos, startknapp))
+        {
+            if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+            {
+                currentRoom = "menu";
+                Rectangle tilllab = new Rectangle(225, 110, 350, 100);
+            }
+        }
+
+
+        om raylib kollar kollision med sparad punkt och muspositionen träffar området (startknapp) 
+        och om vänstra musknappen klickas så kommer current room bli menyn. 
+        Rektnageln under blir sedan en ny knapp som kommer ta spelaren til labyrinten.
