@@ -268,14 +268,14 @@ while (!Raylib.WindowShouldClose())
     {
         Raylib.BeginDrawing();
         {
-            Duvann();
+            YouWin();
         }
     }
 
 }
 
 
-void Duvann()
+void YouWin()
 {
             Raylib.ClearBackground(Color.Black);
             Raylib.DrawText("DU NÅDDE SLUTET AV LABYRINTEN", 120, 200, 30, Color.Red);
